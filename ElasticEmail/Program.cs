@@ -12,10 +12,11 @@ var host = CreateHostBuilder(args).Build();
 var emailSender = host.Services.GetService<IEmailSenderService>();
 
 
-string menu = "1 - Send email \n 2 - Upload CSV \n E - Exit ";
+string menu = "1 - Send email \n2 - Upload CSV \nE - Exit ";
 bool exit = false;
 
 Console.WriteLine(menu);
+
 while (!exit)
 {
     switch (Console.ReadLine())
@@ -23,14 +24,15 @@ while (!exit)
         case "1":
             var messageData = emailSender.EmailCreation();
             emailSender.SendEmail(messageData);
-
             Console.WriteLine(menu);
             break;
         case "2":
             var messageDataCsv = emailSender.MergeCsvEmailCreation();
             emailSender.SendEmailsFromCsv(messageDataCsv);
+            Console.WriteLine(menu);
             break;
-        case "e":
+        case "E":
+            Console.WriteLine("Goodbye");
             exit = true;
             break;
         default:
@@ -38,7 +40,6 @@ while (!exit)
             break;
    }
 }
-
 
 static IHostBuilder CreateHostBuilder(string[] args)
 {

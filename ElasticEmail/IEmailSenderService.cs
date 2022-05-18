@@ -10,7 +10,7 @@ namespace EmailSender
     public interface IEmailSenderService
     {
         void SendEmailsFromCsv(MergeEmailPayload messageDataCsv);
-        string SendEmail(EmailMessageData messageData);
+        void SendEmail(EmailMessageData messageData);
 
         EmailMessageData EmailCreation();
         MergeEmailPayload MergeCsvEmailCreation();
