@@ -50,7 +50,7 @@ static IHostBuilder CreateHostBuilder(string[] args)
         })
         .ConfigureServices((context, services) =>
         {
-            services.AddTransient<IEmailSenderService, EmailSenderService>();
+            services.AddSingleton<IEmailSenderService, EmailSenderService>();
        
         });
 
